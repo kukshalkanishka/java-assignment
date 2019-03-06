@@ -1,4 +1,4 @@
-package com.step.javaExercise;
+package com.step.assignments;
 
 import com.step.assignments.MinutesAndSeconds;
 import org.junit.jupiter.api.Test;
