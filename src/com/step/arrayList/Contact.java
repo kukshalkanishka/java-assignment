@@ -2,19 +2,21 @@ package com.step.arrayList;
 
 import java.util.ArrayList;
 
-public class GroceryList {
-    private ArrayList<String> groceryList = new ArrayList<String>();
 
-    public void printGroceryList(){
-        System.out.println(this.groceryList);
+public class Contact {
+    private String name;
+    private Long number;
+
+    public Contact(String name, Long number) {
+        this.name = name;
+        this.number = number;
     }
 
-    public void modifyItem(int position, String newItem){
-        groceryList.set(position, newItem);
+    public String getName() {
+        return this.name;
     }
 
-    public void addItems(String item){
-        groceryList.add(item);
+    public long getPhoneNumber() {
+        return this.number;
     }
 }
-
