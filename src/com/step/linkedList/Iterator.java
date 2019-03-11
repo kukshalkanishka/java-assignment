@@ -9,18 +9,17 @@ public class Iterator {
 
     public Iterator(List list) {
         this.list = list;
-        this.currentIndex =0;
+        this.currentIndex = -1;
     }
 
-    public boolean hasNext(){
-        return this.list.size() -1 >= this.currentIndex;
+    public boolean hasNext() {
+        return this.list.size() > this.currentIndex + 1;
     }
 
-    public Integer next(){
-        if(this.hasNext()){
-            Integer currentElement = (Integer) this.list.get(this.currentIndex);
+    public Integer next() {
+        if (this.hasNext()) {
             this.currentIndex++;
-            return currentElement;
+            return (Integer) this.list.get(this.currentIndex);
         }
         throw new NoSuchElementException();
     }
