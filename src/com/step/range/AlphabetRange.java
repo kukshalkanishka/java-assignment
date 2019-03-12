@@ -1,4 +1,4 @@
-package range;
+package com.step.range;
 
 
 public class AlphabetRange extends Range<Character> {

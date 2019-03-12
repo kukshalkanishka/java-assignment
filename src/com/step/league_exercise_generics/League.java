@@ -1,4 +1,4 @@
-package com.step.leagueExercise_generics;
+package com.step.league_exercise_generics;
 
 import java.util.Comparator;
 import java.util.List;

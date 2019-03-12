@@ -1,4 +1,4 @@
-package com.step.masterChallenge;
+package com.step.master_challenge;
 
 public class AdditionalItem {
     private String name;

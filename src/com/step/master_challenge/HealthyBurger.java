@@ -1,4 +1,4 @@
-package com.step.masterChallenge;
+package com.step.master_challenge;
 
 // a) Healthy burger (on a brown rye bread roll), plus two addition items that can be added.
 // The healthy burger can have 6 items (Additions) in total.

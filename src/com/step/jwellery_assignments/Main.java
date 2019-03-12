@@ -1,4 +1,4 @@
-package com.step.jwelleryAssignments;
+package com.step.jwellery_assignments;
 
 public class Main {
     public static void main(String[] args) {

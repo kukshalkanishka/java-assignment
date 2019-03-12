@@ -1,4 +1,4 @@
-package com.step.leagueExercise_generics;
+package com.step.league_exercise_generics;
 
 public class Cricket extends Team{
     public Cricket(String name,int matchesWon, int matchesLost, int matchesDrawn) {

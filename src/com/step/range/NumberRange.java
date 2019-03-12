@@ -1,4 +1,4 @@
-package range;
+package com.step.range;
 
 public class NumberRange extends Range<Integer> {
 

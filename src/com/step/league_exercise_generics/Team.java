@@ -1,4 +1,4 @@
-package com.step.leagueExercise_generics;
+package com.step.league_exercise_generics;
 
 public abstract class Team{
     protected int matchesWon;

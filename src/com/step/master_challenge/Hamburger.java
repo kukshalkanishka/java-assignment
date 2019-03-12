@@ -1,4 +1,4 @@
-package com.step.masterChallenge;
+package com.step.master_challenge;
 
 // The basic hamburger should have the following items.
 // Bread roll type, meat and up to 4 additional additions (things like lettuce, tomato, carrot, etc) that

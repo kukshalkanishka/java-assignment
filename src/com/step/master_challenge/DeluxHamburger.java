@@ -1,4 +1,4 @@
-package com.step.masterChallenge;
+package com.step.master_challenge;
 
 // b) Deluxe hamburger - comes with chips and drinks as additions, but no extra additions are allowed.
 // hint:  You have to find a way to automatically add these new additions at the time the deluxe burger
