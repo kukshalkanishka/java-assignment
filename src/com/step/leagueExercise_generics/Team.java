@@ -8,11 +8,9 @@ public abstract class Team{
 
     abstract int compareTo(int totalPoints);
 
-    public int getTotalPoints(){
-        return this.matchesDrawn + this.matchesWon - this.matchesLost;
-    }
-
     public String getName(){
         return this.name;
     }
+
+    public abstract int getTotalPoints();
 }

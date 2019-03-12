@@ -10,11 +10,15 @@ public class FootballTeam extends Team {
         this.matchesLost = matchesLost;
     }
 
+    public int getTotalPoints(){
+        return this.matchesWon + (this.matchesLost * -2);
+    }
+
     public int compareTo(int otherPlayerPoints) {
-        if (getTotalPoints() == otherPlayerPoints) {
+        if (this.getTotalPoints() == otherPlayerPoints) {
             return 0;
         }
-        if (getTotalPoints() > otherPlayerPoints) {
+        if (this.getTotalPoints() > otherPlayerPoints) {
             return 1;
         }
         return -1;

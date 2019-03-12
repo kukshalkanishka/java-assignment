@@ -10,8 +10,13 @@ public class Cricket extends Team{
     }
 
     @Override
+    public int getTotalPoints(){
+        return (this.matchesWon *2) + this.matchesDrawn;
+    }
+
+    @Override
     public int compareTo(int otherPlayerPoints) {
-        int totalPoints = this.matchesWon + this.matchesDrawn -this.matchesLost;
+        int totalPoints = this.getTotalPoints();
         if(totalPoints == otherPlayerPoints){
             return 0;
         }
@@ -20,5 +25,7 @@ public class Cricket extends Team{
         }
         return -1;
     }
+
+
 
 }

@@ -1,23 +1,18 @@
 package com.step.leagueExercise_generics;
 
-import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
-public class League <T extends Team>{
-    private ArrayList<T> teams = new ArrayList<>();
+public class League<T extends Team> {
+    private List<T> teams;
 
-    public League(String name) {
-        this.name = name;
+    public League(List<T> teams) {
+        this.teams = teams;
     }
 
-    private String name;
-
-    public void addTeam(T team){
-        this.teams.add(team);
-    }
-
-    public void printTeamsInOrder(){
-        for (Team team: this.teams) {
+    public void printTeamsInOrder() {
+        this.sortTeams();
+        for (Team team : this.teams) {
             System.out.println(team.getName());
         }
     }
