@@ -1,15 +1,15 @@
 package com.step.polymorphism;
 
 public class NonInteractiveWebPage implements Fetchable, Displayable{
-    private String content = "Welcome to non interactive web page";
+    private String webContent = "Welcome to non interactive web page";
 
     @Override
     public String fetchContents() {
-        return content;
+        return webContent;
     }
 
     @Override
-    public void display() {
+    public void display(String content) {
         System.out.println(content);
     }
 }

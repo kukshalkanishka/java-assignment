@@ -2,11 +2,11 @@ package com.step.polymorphism;
 
 public class WebPage implements Displayable, Fetchable{
 
-    private String content = "Welcome to the Web page";
+    private String webContent = "Welcome to the Web page";
 
     @Override
-    public void display() {
-        System.out.println(this.content);
+    public void display(String content) {
+        System.out.println(content);
     }
 
     public void click(){
@@ -15,6 +15,6 @@ public class WebPage implements Displayable, Fetchable{
 
     @Override
     public String fetchContents() {
-        return content;
+        return webContent;
     }
 }

@@ -9,13 +9,13 @@ public class Main {
         Fetchable webPage1 = new WebPage();
         Displayable nonInteractiveWebPage = new NonInteractiveWebPage();
         Fetchable nonInteractiveWebPage1 = new NonInteractiveWebPage();
-        console.display();
+        console.display("hello");
         System.out.println(pdfPage.fetchContents());
         ((WebPage) webPage).click();
-        webPage.display();
+        webPage.display(((WebPage) webPage).fetchContents());
         System.out.println(((WebPage) webPage).fetchContents());
         System.out.println(webPage1.fetchContents());
-        nonInteractiveWebPage.display();
+        nonInteractiveWebPage.display(((NonInteractiveWebPage) nonInteractiveWebPage).fetchContents());
         System.out.println(nonInteractiveWebPage1.fetchContents());
 
     }
