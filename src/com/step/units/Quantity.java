@@ -11,10 +11,14 @@ public class Quantity {
         this.unit = lengthUnit;
     }
 
-    public boolean isEqual(Quantity otherQuantity){
+    public boolean isEqual(Quantity otherQuantity) {
+        boolean isSameType = this.unit.isSameType(otherQuantity.unit);
+
         double value1InBase = this.unit.valueInBase(this.value);
         double value2InBase = otherQuantity.unit.valueInBase(otherQuantity.value);
-        System.out.println(value1InBase +" "+ value2InBase);
-        return value1InBase == (value2InBase);
+
+        boolean hasSameBaseValue = value1InBase == (value2InBase);
+
+        return isSameType && hasSameBaseValue;
     }
 }
