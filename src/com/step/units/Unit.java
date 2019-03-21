@@ -2,12 +2,13 @@ package com.step.units;
 
 import java.math.BigDecimal;
 
-enum UnitTypes {
-    LENGTH, VOLUME;
-}
 
 public class Unit {
     private final UnitTypes type;
+
+    private enum UnitTypes {
+        LENGTH, VOLUME;
+    }
     private BigDecimal ratio;
 
     public static final Unit FEET = new Unit(new BigDecimal(304.8), UnitTypes.LENGTH);
