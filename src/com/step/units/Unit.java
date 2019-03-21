@@ -1,19 +1,15 @@
 package com.step.units;
 
-public class Unit {
-    private double ratio;
+import java.math.BigDecimal;
 
-    private Unit(double ratio) {
+public abstract class Unit {
+    private BigDecimal ratio;
+
+    public Unit(BigDecimal ratio) {
         this.ratio = ratio;
     }
 
-    public static final Unit FEET = new Unit((304.8));
-    public static final Unit INCHES = new Unit((25.4));
-    public static final Unit CENTIMETER = new Unit((10));
-    public static final Unit MILIMETER = new Unit((1));
-
-    public int valueInBase(double value) {
-        int valueInInt = (int) Math.round(value);
-        return (int) (valueInInt * ratio);
+    public int valueInBase(BigDecimal value) {
+        return this.ratio.multiply(value).intValue();
     }
 }
