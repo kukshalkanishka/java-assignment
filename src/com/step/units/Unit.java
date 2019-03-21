@@ -9,6 +9,7 @@ public class Unit {
     private enum UnitTypes {
         LENGTH, VOLUME;
     }
+
     private BigDecimal ratio;
 
     public static final Unit FEET = new Unit(new BigDecimal(304.8), UnitTypes.LENGTH);
@@ -27,6 +28,10 @@ public class Unit {
 
     public int valueInBase(BigDecimal value) {
         return this.ratio.multiply(value).intValue();
+    }
+
+    public int convertBackToUnit(BigDecimal value) {
+        return value.intValue()/this.ratio.intValue();
     }
 
     public boolean isSameType(Unit unit){

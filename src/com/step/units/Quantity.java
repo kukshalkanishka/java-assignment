@@ -16,6 +16,10 @@ public class Quantity {
         return this.unit.isSameType(otherQuantity.unit);
     }
 
+    private double getValueInBase(Quantity quantity){
+        return quantity.unit.valueInBase(quantity.value);
+    }
+
     @Override
     public boolean equals(Object otherQuantity) {
         if(!(otherQuantity.getClass().equals(this.getClass()))){
@@ -23,24 +27,24 @@ public class Quantity {
         }
         boolean isSameType = isSameType((Quantity) otherQuantity);
 
-        double value1InBase = this.unit.valueInBase(this.value);
-        double value2InBase = ((Quantity) otherQuantity).unit.valueInBase(((Quantity) otherQuantity).value);
+        double value1InBase = getValueInBase(this);
+        double value2InBase = getValueInBase((Quantity) otherQuantity);
 
         boolean hasSameBaseValue = value1InBase == (value2InBase);
 
         return isSameType && hasSameBaseValue;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(value, unit);
-    }
-
     public Quantity add(Quantity otherQuantity) throws QuantityTypeMismatchException {
         if(!isSameType(otherQuantity)){
             throw new QuantityTypeMismatchException();
         }
-        BigDecimal sum = this.value.add(otherQuantity.value);
-        return new Quantity(sum, this.unit);
+
+        double value1InBase = getValueInBase(this);
+        double value2InBase = getValueInBase((Quantity) otherQuantity);
+
+        double sumInBase = value1InBase + value2InBase;
+        int sum = otherQuantity.unit.convertBackToUnit(new BigDecimal(sumInBase));
+        return new Quantity(new BigDecimal(sum), this.unit);
     }
 }
