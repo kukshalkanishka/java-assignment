@@ -1,13 +1,12 @@
 package com.step.units;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 public class Quantity {
     private BigDecimal value;
     private Unit unit;
 
-    public Quantity(BigDecimal value, Unit lengthUnit) {
+    Quantity(BigDecimal value, Unit lengthUnit) {
         this.value = value;
         this.unit = lengthUnit;
     }
@@ -16,13 +15,13 @@ public class Quantity {
         return this.unit.isSameType(otherQuantity.unit);
     }
 
-    private double getValueInBase(Quantity quantity){
+    private double getValueInBase(Quantity quantity) {
         return quantity.unit.valueInBase(quantity.value);
     }
 
     @Override
     public boolean equals(Object otherQuantity) {
-        if(!(otherQuantity.getClass().equals(this.getClass()))){
+        if (!(otherQuantity.getClass().equals(this.getClass()))) {
             return false;
         }
         boolean isSameType = isSameType((Quantity) otherQuantity);
@@ -36,15 +35,15 @@ public class Quantity {
     }
 
     public Quantity add(Quantity otherQuantity) throws QuantityTypeMismatchException {
-        if(!isSameType(otherQuantity)){
+        if (!isSameType(otherQuantity)) {
             throw new QuantityTypeMismatchException();
         }
 
         double value1InBase = getValueInBase(this);
-        double value2InBase = getValueInBase((Quantity) otherQuantity);
+        double value2InBase = getValueInBase(otherQuantity);
 
         double sumInBase = value1InBase + value2InBase;
-        int sum = otherQuantity.unit.convertBackToUnit(new BigDecimal(sumInBase));
-        return new Quantity(new BigDecimal(sum), this.unit);
+        int sum = this.unit.convertBackToInches(new BigDecimal(sumInBase));
+        return new Quantity(new BigDecimal(sum), Unit.INCHES);
     }
 }

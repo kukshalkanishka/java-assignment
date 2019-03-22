@@ -30,8 +30,8 @@ public class Unit {
         return this.ratio.multiply(value).intValue();
     }
 
-    public int convertBackToUnit(BigDecimal value) {
-        return value.intValue()/this.ratio.intValue();
+    public int convertBackToInches(BigDecimal value) {
+        return value.intValue()/Unit.INCHES.ratio.intValue();
     }
 
     public boolean isSameType(Unit unit){
