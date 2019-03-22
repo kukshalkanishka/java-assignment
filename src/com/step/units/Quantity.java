@@ -43,7 +43,7 @@ public class Quantity {
         double value2InBase = getValueInBase(otherQuantity);
 
         double sumInBase = value1InBase + value2InBase;
-        int sum = this.unit.convertBackToInches(new BigDecimal(sumInBase));
-        return new Quantity(new BigDecimal(sum), Unit.INCHES);
+        int sum = this.unit.convertBaseToUnit(new BigDecimal(sumInBase));
+        return new Quantity(new BigDecimal(sum), this.unit);
     }
 }

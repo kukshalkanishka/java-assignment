@@ -4,23 +4,14 @@ import java.math.BigDecimal;
 
 
 public class Unit {
-    private final UnitTypes type;
-
-    private enum UnitTypes {
-        LENGTH, VOLUME;
-    }
-
-    private BigDecimal ratio;
-
     public static final Unit FEET = new Unit(new BigDecimal(304.8), UnitTypes.LENGTH);
     public static final Unit INCHES = new Unit(new BigDecimal(25.4), UnitTypes.LENGTH);
     public static final Unit CENTIMETER = new Unit(new BigDecimal(10), UnitTypes.LENGTH);
     public static final Unit MILLIMETER = new Unit(new BigDecimal(1), UnitTypes.LENGTH);
-
     public static final Unit GALLON = new Unit(new BigDecimal(3790), UnitTypes.VOLUME);
     public static final Unit LITRE = new Unit(new BigDecimal(1000), UnitTypes.VOLUME);
-
-
+    private final UnitTypes type;
+    private BigDecimal ratio;
     public Unit(BigDecimal ratio, UnitTypes unitType) {
         this.ratio = ratio;
         this.type = unitType;
@@ -30,11 +21,15 @@ public class Unit {
         return this.ratio.multiply(value).intValue();
     }
 
-    public int convertBackToInches(BigDecimal value) {
-        return value.intValue()/Unit.INCHES.ratio.intValue();
+    public int convertBaseToUnit(BigDecimal value) {
+        return value.intValue() / this.ratio.intValue();
     }
 
-    public boolean isSameType(Unit unit){
+    public boolean isSameType(Unit unit) {
         return this.type == unit.type;
+    }
+
+    private enum UnitTypes {
+        LENGTH, VOLUME
     }
 }

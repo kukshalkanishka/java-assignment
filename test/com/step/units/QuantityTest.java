@@ -64,7 +64,7 @@ class QuantityTest {
     }
 
     @Test
-    void shouldThrowExceptionWhenTwoDifferentTypeQuantitiesAreAdded(){
+    void shouldThrowExceptionWhenTwoDifferentTypeQuantitiesAreAdded() {
         Quantity twoInches = new Quantity(new BigDecimal(2), Unit.INCHES);
         Quantity fourLitres = new Quantity(new BigDecimal(4), Unit.LITRE);
         assertThrows(QuantityTypeMismatchException.class, () -> twoInches.add(fourLitres));
@@ -82,7 +82,7 @@ class QuantityTest {
     void shouldReturnResultOfAdditionInInchesWhenTheOperandsAreInDifferentUnits() throws QuantityTypeMismatchException {
         Quantity twoFeet = new Quantity(new BigDecimal(2), Unit.FEET);
         Quantity twoPointFiveCm = new Quantity(new BigDecimal(2.5), Unit.CENTIMETER);
-        Quantity expectedInches = new Quantity(new BigDecimal(25), Unit.INCHES);
+        Quantity expectedInches = new Quantity(new BigDecimal(2), Unit.FEET);
         assertEquals(expectedInches, twoFeet.add(twoPointFiveCm));
     }
 }
