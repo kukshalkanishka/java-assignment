@@ -28,13 +28,14 @@ public class Quantity {
 
         double value1InBase = getValueInBase(this);
         double value2InBase = getValueInBase((Quantity) otherQuantity);
+        System.out.println(value1InBase + " " + value2InBase);
 
         boolean hasSameBaseValue = value1InBase == (value2InBase);
 
         return isSameType && hasSameBaseValue;
     }
 
-    public Quantity add(Quantity otherQuantity) throws QuantityTypeMismatchException {
+    public Quantity add(Quantity otherQuantity) throws QuantityTypeMismatchException{
         if (!isSameType(otherQuantity)) {
             throw new QuantityTypeMismatchException();
         }

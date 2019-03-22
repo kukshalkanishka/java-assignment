@@ -3,33 +3,31 @@ package com.step.units;
 import java.math.BigDecimal;
 
 
-public class Unit {
-    public static final Unit FEET = new Unit(new BigDecimal(304.8), UnitTypes.LENGTH);
-    public static final Unit INCHES = new Unit(new BigDecimal(25.4), UnitTypes.LENGTH);
-    public static final Unit CENTIMETER = new Unit(new BigDecimal(10), UnitTypes.LENGTH);
-    public static final Unit MILLIMETER = new Unit(new BigDecimal(1), UnitTypes.LENGTH);
-    public static final Unit GALLON = new Unit(new BigDecimal(3790), UnitTypes.VOLUME);
-    public static final Unit LITRE = new Unit(new BigDecimal(1000), UnitTypes.VOLUME);
+abstract class Unit {
+
+
     private final UnitTypes type;
-    private BigDecimal ratio;
-    public Unit(BigDecimal ratio, UnitTypes unitType) {
+    final BigDecimal ratio;
+
+    Unit(BigDecimal ratio, UnitTypes unitType) {
         this.ratio = ratio;
         this.type = unitType;
     }
 
-    public int valueInBase(BigDecimal value) {
+    int valueInBase(BigDecimal value) {
         return this.ratio.multiply(value).intValue();
     }
 
-    public int convertBaseToUnit(BigDecimal value) {
+    int convertBaseToUnit(BigDecimal value){
         return value.intValue() / this.ratio.intValue();
     }
 
-    public boolean isSameType(Unit unit) {
+
+    boolean isSameType(Unit unit) {
         return this.type == unit.type;
     }
 
-    private enum UnitTypes {
-        LENGTH, VOLUME
+    enum UnitTypes {
+        LENGTH, VOLUME, TEMPERATURE
     }
 }
