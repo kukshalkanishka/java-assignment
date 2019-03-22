@@ -9,6 +9,6 @@ public class LengthUnit extends Unit {
     static final Unit MILLIMETER = new LengthUnit(new BigDecimal(1));
 
     private LengthUnit(BigDecimal ratio){
-        super(ratio,UnitTypes.LENGTH);
+        super(ratio);
     }
 }

@@ -4,13 +4,13 @@ import java.math.BigDecimal;
 
 public class TemperatureUnit extends Unit {
 
-    static final Unit FAREHNEIT = new TemperatureUnit(new BigDecimal(1),0);
-    static final Unit CELCIUS = new TemperatureUnit(new BigDecimal(1.8),32);
+    static final Unit FAHRENHEIT = new TemperatureUnit(new BigDecimal(1),0);
+    static final Unit CELSIUS = new TemperatureUnit(new BigDecimal(1.8),32);
 
     private final double scale;
 
     public TemperatureUnit(BigDecimal ratio, double scale) {
-        super(ratio,UnitTypes.TEMPERATURE);
+        super(ratio);
         this.scale = scale;
     }
 

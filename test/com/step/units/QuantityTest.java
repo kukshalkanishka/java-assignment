@@ -36,10 +36,10 @@ class QuantityTest {
     }
 
     @Test
-    void shouldReturnTrueWhenQuantityInMilimeterIsEqualToQuantityInCentimeter() {
-        Quantity oneMilimeter = new Quantity(new BigDecimal(10), LengthUnit.MILLIMETER);
+    void shouldReturnTrueWhenQuantityInMillimeterIsEqualToQuantityInCentimeter() {
+        Quantity oneMillimeter = new Quantity(new BigDecimal(10), LengthUnit.MILLIMETER);
         Quantity pointOneCm = new Quantity(new BigDecimal(1), LengthUnit.CENTIMETER);
-        assertTrue(oneMilimeter.equals(pointOneCm));
+        assertTrue(oneMillimeter.equals(pointOneCm));
     }
 
     @Test
@@ -87,16 +87,16 @@ class QuantityTest {
     }
 
     @Test
-    void shouldReturnFalseWhenThreeCelciusIsComparedWithThirtyThreeFahrenheit(){
-        Quantity threeCelcius = new Quantity(new BigDecimal(3), TemperatureUnit.CELCIUS);
-        Quantity thirtyThreeF = new Quantity(new BigDecimal(33), TemperatureUnit.FAREHNEIT);
+    void shouldReturnFalseWhenThreeCelciusIsComparedWithThirtyThreeFahrenheit() {
+        Quantity threeCelcius = new Quantity(new BigDecimal(3), TemperatureUnit.CELSIUS);
+        Quantity thirtyThreeF = new Quantity(new BigDecimal(33), TemperatureUnit.FAHRENHEIT);
         assertFalse(threeCelcius.equals(thirtyThreeF));
     }
 
     @Test
-    void shouldReturnTrueWhenHundredCelciusIsComparedWithTwoHundredTwelveFahrenheit(){
-        Quantity hundredCelsius = new Quantity(new BigDecimal(100), TemperatureUnit.CELCIUS);
-        Quantity twoHundredTwelveF = new Quantity(new BigDecimal(212), TemperatureUnit.FAREHNEIT);
+    void shouldReturnTrueWhenHundredCelciusIsComparedWithTwoHundredTwelveFahrenheit() {
+        Quantity hundredCelsius = new Quantity(new BigDecimal(100), TemperatureUnit.CELSIUS);
+        Quantity twoHundredTwelveF = new Quantity(new BigDecimal(212), TemperatureUnit.FAHRENHEIT);
         assertTrue(hundredCelsius.equals(twoHundredTwelveF));
     }
 }

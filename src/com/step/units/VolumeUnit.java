@@ -8,7 +8,7 @@ public class VolumeUnit extends Unit{
     static final Unit LITRE = new VolumeUnit(new BigDecimal(1000));
 
     private VolumeUnit(BigDecimal ratio){
-        super(ratio,UnitTypes.VOLUME);
+        super(ratio);
     }
 
 }

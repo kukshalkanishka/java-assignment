@@ -6,12 +6,10 @@ import java.math.BigDecimal;
 abstract class Unit {
 
 
-    private final UnitTypes type;
     final BigDecimal ratio;
 
-    Unit(BigDecimal ratio, UnitTypes unitType) {
+    Unit(BigDecimal ratio) {
         this.ratio = ratio;
-        this.type = unitType;
     }
 
     int valueInBase(BigDecimal value) {
@@ -24,10 +22,6 @@ abstract class Unit {
 
 
     boolean isSameType(Unit unit) {
-        return this.type == unit.type;
-    }
-
-    enum UnitTypes {
-        LENGTH, VOLUME, TEMPERATURE
+        return this.getClass().equals(unit.getClass());
     }
 }
