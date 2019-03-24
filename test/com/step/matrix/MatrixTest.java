@@ -10,95 +10,60 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MatrixTest {
     @Test
-    void shouldReturnTrueWhenTheExpectedSumIsEqualToTheAdditionOfTwoMatrices() {
-
-        ArrayList<Integer> row1 = new ArrayList<>(asList(1, 2, 3));
-        ArrayList<Integer> row2 = new ArrayList<>(asList(3, 1, 2));
-
-        Matrix matrix1 = new Matrix(asList(row1, row2));
-        Matrix matrix2 = new Matrix(asList(row2, row1));
-
-        ArrayList<Integer> expectedRow1 = new ArrayList<>(asList(4, 3, 5));
-        ArrayList<Integer> expectedRow2 = new ArrayList<>(asList(4, 3, 5));
-        Matrix expectedSum = new Matrix(asList(expectedRow1, expectedRow2));
-
-        Matrix sum = matrix1.add(matrix2);
-
-        assertTrue(expectedSum.isEqual(sum));
-    }
-
-    @Test
-    void shouldReturnFalseWhenTheExpectedSumIsNotEqualToTheAdditionOfTwoMatrices() {
-
-        ArrayList<Integer> row1 = new ArrayList<>(asList(1, 2, 3));
-        ArrayList<Integer> row2 = new ArrayList<>(asList(3, 1, 2));
-
-        Matrix matrix1 = new Matrix(asList(row1, row2));
-        Matrix matrix2 = new Matrix(asList(row2, row1));
-
-        ArrayList<Integer> expectedRow1 = new ArrayList<>(asList(6, 3, 5));
-        ArrayList<Integer> expectedRow2 = new ArrayList<>(asList(4, 3, 5));
-        Matrix expectedSum = new Matrix(asList(expectedRow1, expectedRow2));
-
-        Matrix sum = matrix1.add(matrix2);
-
-        assertFalse(expectedSum.isEqual(sum));
-    }
-
-    @Test
-    void shouldReturnTrueWhenTheExpectedMultiplicationIsEqualToTheMultiplicationOfTwoMatrices() {
+    void shouldReturnTrueWhenTheExpectedMatrixIsEqualToTheTransposeOfTheMatrixOfIntegers() {
 
         ArrayList<Integer> row1 = new ArrayList<>(asList(1, 2, 3));
         ArrayList<Integer> row2 = new ArrayList<>(asList(3, 1, 2));
         ArrayList<Integer> row3 = new ArrayList<>(asList(3, 1, 2));
 
-        Matrix matrix1 = new Matrix(asList(row1, row2));
-        Matrix matrix2 = new Matrix(asList(row2, row1, row3));
-
-        ArrayList<Integer> expectedRow1 = new ArrayList<>(asList(14, 8, 14));
-        ArrayList<Integer> expectedRow2 = new ArrayList<>(asList(16, 7, 13));
-        Matrix expectedMultiplication = new Matrix(asList(expectedRow1, expectedRow2));
-
-        Matrix multiplication = matrix1.multiply(matrix2);
-
-        assertTrue(expectedMultiplication.isEqual(multiplication));
-    }
-
-    @Test
-    void shouldReturnFalseWhenTheExpectedMultiplicationIsNotEqualToTheMultiplicationOfTwoMatrices() {
-
-        ArrayList<Integer> row1 = new ArrayList<>(asList(1, 2, 3));
-        ArrayList<Integer> row2 = new ArrayList<>(asList(3, 1, 2));
-        ArrayList<Integer> row3 = new ArrayList<>(asList(3, 1, 2));
-
-        Matrix matrix1 = new Matrix(asList(row1, row2));
-        Matrix matrix2 = new Matrix(asList(row2, row1, row3));
-
-        ArrayList<Integer> expectedRow1 = new ArrayList<>(asList(12, 8, 14));
-        ArrayList<Integer> expectedRow2 = new ArrayList<>(asList(16, 7, 13));
-        Matrix expectedMultiplication = new Matrix(asList(expectedRow1, expectedRow2));
-
-        Matrix multiplication = matrix1.multiply(matrix2);
-
-        assertFalse(expectedMultiplication.isEqual(multiplication));
-    }
-
-    @Test
-    void shouldReturnTrueWhenTheExpectedMatrixIsEqualToTheTransposeOfTheMatrix() {
-
-        ArrayList<Integer> row1 = new ArrayList<>(asList(1, 2, 3));
-        ArrayList<Integer> row2 = new ArrayList<>(asList(3, 1, 2));
-        ArrayList<Integer> row3 = new ArrayList<>(asList(3, 1, 2));
-
-        Matrix matrix = new Matrix(asList(row1, row2, row3));
+        Matrix<Integer> matrix = new Matrix<>(asList(row1, row2, row3));
 
         ArrayList<Integer> expectedRow1 = new ArrayList<>(asList(1, 3, 3));
         ArrayList<Integer> expectedRow2 = new ArrayList<>(asList(2, 1, 1));
         ArrayList<Integer> expectedRow3 = new ArrayList<>(asList(3, 2, 2));
 
-        Matrix expectedTranspose = new Matrix(asList(expectedRow1, expectedRow2, expectedRow3));
+        Matrix<Integer> expectedTranspose = new Matrix<>(asList(expectedRow1, expectedRow2, expectedRow3));
 
-        Matrix transpose = matrix.transpose();
+        Matrix<Integer> transpose = matrix.transpose();
+
+        assertTrue(expectedTranspose.isEqual(transpose));
+    }
+
+    @Test
+    void shouldReturnTrueWhenTheExpectedMatrixIsEqualToTheTransposeOfTheMatrixOfStrings() {
+
+        ArrayList<String> row1 = new ArrayList<>(asList("one", "two", "three"));
+        ArrayList<String> row2 = new ArrayList<>(asList("three", "one", "two"));
+        ArrayList<String> row3 = new ArrayList<>(asList("three", "one", "two"));
+
+        Matrix<String> matrix = new Matrix<>(asList(row1, row2, row3));
+
+        ArrayList<String> expectedRow1 = new ArrayList<>(asList("one", "three", "three"));
+        ArrayList<String> expectedRow2 = new ArrayList<>(asList("two", "one", "one"));
+        ArrayList<String> expectedRow3 = new ArrayList<>(asList("three", "two", "two"));
+
+        Matrix<String> expectedTranspose = new Matrix<>(asList(expectedRow1, expectedRow2, expectedRow3));
+
+        Matrix<String> transpose = matrix.transpose();
+
+        assertTrue(expectedTranspose.isEqual(transpose));
+    }
+
+    @Test
+    void shouldReturnTrueWhenTheExpectedMatrixIsEqualToTheTransposeOfTheMatrixOfBooleans() {
+
+        ArrayList<Boolean> row1 = new ArrayList<>(asList(true, false, true));
+        ArrayList<Boolean> row2 = new ArrayList<>(asList(false, true, false));
+
+        Matrix<Boolean> matrix = new Matrix<>(asList(row1, row2));
+
+        ArrayList<Boolean> expectedRow1 = new ArrayList<>(asList(true, false));
+        ArrayList<Boolean> expectedRow2 = new ArrayList<>(asList(false, true));
+        ArrayList<Boolean> expectedRow3 = new ArrayList<>(asList(true, false));
+
+        Matrix<Boolean> expectedTranspose = new Matrix<>(asList(expectedRow1, expectedRow2, expectedRow3));
+
+        Matrix<Boolean> transpose = matrix.transpose();
 
         assertTrue(expectedTranspose.isEqual(transpose));
     }
@@ -110,16 +75,17 @@ class MatrixTest {
         ArrayList<Integer> row2 = new ArrayList<>(asList(3, 1, 2));
         ArrayList<Integer> row3 = new ArrayList<>(asList(3, 1, 2));
 
-        Matrix matrix = new Matrix(asList(row1, row2, row3));
+        Matrix<Integer> matrix = new Matrix<>(asList(row1, row2, row3));
 
         ArrayList<Integer> expectedRow1 = new ArrayList<>(asList(8, 3, 3));
         ArrayList<Integer> expectedRow2 = new ArrayList<>(asList(2, 1, 1));
         ArrayList<Integer> expectedRow3 = new ArrayList<>(asList(3, 2, 2));
 
-        Matrix expectedTranspose = new Matrix(asList(expectedRow1, expectedRow2, expectedRow3));
+        Matrix<Integer> expectedTranspose = new Matrix<>(asList(expectedRow1, expectedRow2, expectedRow3));
 
         Matrix transpose = matrix.transpose();
 
         assertFalse(expectedTranspose.isEqual(transpose));
     }
+
 }

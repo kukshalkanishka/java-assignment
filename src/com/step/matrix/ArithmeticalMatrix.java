@@ -1,0 +1,51 @@
+package com.step.matrix;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class ArithmeticalMatrix extends Matrix<Integer> {
+
+    ArithmeticalMatrix(List<ArrayList<Integer>> matrix) {
+        super(matrix);
+    }
+
+
+    private Integer getCellValue(ArithmeticalMatrix matrix, int rowNum, int colNum) {
+        return matrix.matrix.get(rowNum).get(colNum);
+    }
+
+    private int getCellMultiplication(ArithmeticalMatrix otherMatrix, int row, int chance) {
+        int cellMultiplication = 0;
+        for (int col = 0; col < numOfCols; col++) {
+            cellMultiplication += (int) (matrix.get(row).get(col)) * (int) (otherMatrix.matrix.get(col).get(chance));
+        }
+        return cellMultiplication;
+    }
+
+    ArithmeticalMatrix multiply(ArithmeticalMatrix otherMatrix) {
+        List<ArrayList<Integer>> multiplication = new ArrayList<>();
+        for (int row = 0; row < numOfRows; row++) {
+            multiplication.add(new ArrayList<>());
+            for (int chance = 0; chance < numOfCols; chance++) {
+                multiplication.get(row).add(chance, getCellMultiplication(otherMatrix, row, chance));
+            }
+        }
+        return new ArithmeticalMatrix(multiplication);
+    }
+
+
+    ArithmeticalMatrix add(ArithmeticalMatrix otherMatrix) {
+        List<ArrayList<Integer>> sum = new ArrayList<>();
+
+        for (int row = 0; row < numOfRows; row++) {
+            for (int column = 0; column < numOfCols; column++) {
+                sum.add(new ArrayList<>());
+                ArrayList<Integer> currentRow = sum.get(row);
+                int value1 = (int) getCellValue(this, row, column);
+                int value2 = (int) getCellValue(otherMatrix, row, column);
+                currentRow.add(column, value1 + value2);
+            }
+        }
+        return new ArithmeticalMatrix(sum);
+    }
+}
