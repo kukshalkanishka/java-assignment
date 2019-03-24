@@ -2,14 +2,14 @@ package com.step.units;
 
 import java.math.BigDecimal;
 
-public class TemperatureUnit extends Unit {
+class TemperatureUnit extends Unit {
 
     static final Unit FAHRENHEIT = new TemperatureUnit(new BigDecimal(1),0);
     static final Unit CELSIUS = new TemperatureUnit(new BigDecimal(1.8),32);
 
     private final double scale;
 
-    public TemperatureUnit(BigDecimal ratio, double scale) {
+    private TemperatureUnit(BigDecimal ratio, double scale) {
         super(ratio);
         this.scale = scale;
     }

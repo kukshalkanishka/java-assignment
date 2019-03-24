@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 
 abstract class Unit {
 
-
     final BigDecimal ratio;
 
     Unit(BigDecimal ratio) {
@@ -19,7 +18,6 @@ abstract class Unit {
     int convertBaseToUnit(BigDecimal value){
         return value.intValue() / this.ratio.intValue();
     }
-
 
     boolean isSameType(Unit unit) {
         return this.getClass().equals(unit.getClass());
