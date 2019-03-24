@@ -19,6 +19,7 @@ public class Quantity {
         return quantity.unit.valueInBase(quantity.value);
     }
 
+
     @Override
     public boolean equals(Object otherQuantity) {
         if (!(otherQuantity.getClass().equals(this.getClass()))) {
