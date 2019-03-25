@@ -13,7 +13,7 @@ class ArithmeticalMatrix extends Matrix<Integer> {
         int numOfCols = matrix.get(0).size();
         for (List<Integer> row : matrix) {
             if(row.size() != numOfCols){
-                throw new Exception("Invalid Matrix");
+                throw new InvalidMatrixException();
             }
         }
         return new ArithmeticalMatrix(matrix);

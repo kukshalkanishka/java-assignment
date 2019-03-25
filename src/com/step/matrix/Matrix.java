@@ -20,7 +20,7 @@ class Matrix<T> {
         int numOfCols = matrix.get(0).size();
         for (List<T> row : matrix) {
             if(row.size() != numOfCols){
-                throw new Exception("Invalid Matrix");
+                throw new InvalidMatrixException();
             }
         }
         return new Matrix<>(matrix);
