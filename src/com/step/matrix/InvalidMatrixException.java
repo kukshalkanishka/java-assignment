@@ -1,7 +1,7 @@
 package com.step.matrix;
 
-public class InvalidMatrixException extends Exception {
-    public InvalidMatrixException() {
+class InvalidMatrixException extends Exception {
+    InvalidMatrixException() {
         super("Invalid matrix");
     }
 }

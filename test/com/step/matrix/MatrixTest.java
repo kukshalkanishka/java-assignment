@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static java.util.Arrays.asList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class MatrixTest {
     @Test
@@ -84,5 +83,15 @@ class MatrixTest {
 
         Matrix transpose = matrix.transpose();
         assertNotEquals(expectedTranspose, transpose);
+    }
+
+    @Test
+    void shouldThrowExceptionForInvalidMatrix(){
+
+        ArrayList<Integer> row1 = new ArrayList<>(asList(1, 2));
+        ArrayList<Integer> row2 = new ArrayList<>(asList(3, 1, 2));
+        ArrayList<Integer> row3 = new ArrayList<>(asList(3, 1, 2));
+
+       assertThrows(InvalidMatrixException.class, ()->Matrix.createMatrix(asList( row1, row2, row3)));
     }
 }
