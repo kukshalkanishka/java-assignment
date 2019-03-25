@@ -5,8 +5,18 @@ import java.util.List;
 
 class ArithmeticalMatrix extends Matrix<Integer> {
 
-    ArithmeticalMatrix(List<ArrayList<Integer>> matrix) {
+    private ArithmeticalMatrix(List<ArrayList<Integer>> matrix){
         super(matrix);
+    }
+
+    static ArithmeticalMatrix createArithmeticalMatrix(List<ArrayList<Integer>> matrix) throws Exception {
+        int numOfCols = matrix.get(0).size();
+        for (List<Integer> row : matrix) {
+            if(row.size() != numOfCols){
+                throw new Exception("Invalid Matrix");
+            }
+        }
+        return new ArithmeticalMatrix(matrix);
     }
 
 
@@ -17,12 +27,12 @@ class ArithmeticalMatrix extends Matrix<Integer> {
     private int getCellMultiplication(ArithmeticalMatrix otherMatrix, int row, int chance) {
         int cellMultiplication = 0;
         for (int col = 0; col < numOfCols; col++) {
-            cellMultiplication += (int) (matrix.get(row).get(col)) * (int) (otherMatrix.matrix.get(col).get(chance));
+            cellMultiplication += matrix.get(row).get(col) * (int) (otherMatrix.matrix.get(col).get(chance));
         }
         return cellMultiplication;
     }
 
-    ArithmeticalMatrix multiply(ArithmeticalMatrix otherMatrix) {
+    ArithmeticalMatrix multiply(ArithmeticalMatrix otherMatrix) throws Exception {
         List<ArrayList<Integer>> multiplication = new ArrayList<>();
         for (int row = 0; row < numOfRows; row++) {
             multiplication.add(new ArrayList<>());
@@ -30,11 +40,11 @@ class ArithmeticalMatrix extends Matrix<Integer> {
                 multiplication.get(row).add(chance, getCellMultiplication(otherMatrix, row, chance));
             }
         }
-        return new ArithmeticalMatrix(multiplication);
+        return createArithmeticalMatrix(multiplication);
     }
 
 
-    ArithmeticalMatrix add(ArithmeticalMatrix otherMatrix) {
+    ArithmeticalMatrix add(ArithmeticalMatrix otherMatrix) throws Exception {
         List<ArrayList<Integer>> sum = new ArrayList<>();
         for (int rowNum = 0; rowNum < numOfRows; rowNum++) {
             sum.add(new ArrayList<>());
@@ -47,6 +57,6 @@ class ArithmeticalMatrix extends Matrix<Integer> {
                 currentRow.add(column, value1 + value2);
             }
         }
-        return new ArithmeticalMatrix(sum);
+        return createArithmeticalMatrix(sum);
     }
 }

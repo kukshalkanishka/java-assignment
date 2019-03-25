@@ -9,11 +9,21 @@ class Matrix<T> {
     protected final int numOfCols;
     protected final List<ArrayList<T>> matrix;
 
-    Matrix(List<ArrayList<T>> matrix) {
+    protected Matrix(List<ArrayList<T>> matrix) {
         this.matrix = matrix;
         this.numOfRows = matrix.size();
         this.numOfCols = matrix.get(0).size();
         matrix = new ArrayList<>();
+    }
+
+    static <T> Matrix<T> createMatrix(List<ArrayList<T>> matrix) throws Exception {
+        int numOfCols = matrix.get(0).size();
+        for (List<T> row : matrix) {
+            if(row.size() != numOfCols){
+                throw new Exception("Invalid Matrix");
+            }
+        }
+        return new Matrix<>(matrix);
     }
 
     @Override
@@ -34,7 +44,7 @@ class Matrix<T> {
                 '}';
     }
 
-    Matrix<T> transpose() {
+    Matrix<T> transpose() throws Exception {
         List<ArrayList<T>> transpose = new ArrayList<>();
         for (int rowNum = 0; rowNum < numOfCols; rowNum++) {
             transpose.add(new ArrayList<>());
@@ -46,6 +56,6 @@ class Matrix<T> {
                 transposeRow.add(row, matrix.get(row).get(column));
             }
         }
-        return new Matrix<>(transpose);
+        return createMatrix(transpose);
     }
 }
