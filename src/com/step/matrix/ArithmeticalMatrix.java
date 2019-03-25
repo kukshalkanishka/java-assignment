@@ -36,13 +36,14 @@ class ArithmeticalMatrix extends Matrix<Integer> {
 
     ArithmeticalMatrix add(ArithmeticalMatrix otherMatrix) {
         List<ArrayList<Integer>> sum = new ArrayList<>();
-
+        for (int rowNum = 0; rowNum < numOfRows; rowNum++) {
+            sum.add(new ArrayList<>());
+        }
         for (int row = 0; row < numOfRows; row++) {
             for (int column = 0; column < numOfCols; column++) {
-                sum.add(new ArrayList<>());
                 ArrayList<Integer> currentRow = sum.get(row);
-                int value1 = (int) getCellValue(this, row, column);
-                int value2 = (int) getCellValue(otherMatrix, row, column);
+                int value1 = getCellValue(this, row, column);
+                int value2 = getCellValue(otherMatrix, row, column);
                 currentRow.add(column, value1 + value2);
             }
         }

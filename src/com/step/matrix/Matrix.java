@@ -2,6 +2,7 @@ package com.step.matrix;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 class Matrix<T> {
     protected final int numOfRows;
@@ -15,23 +16,15 @@ class Matrix<T> {
         matrix = new ArrayList<>();
     }
 
-    boolean isEqual(Matrix<T> otherMatrix) {
-
-        if (this == otherMatrix) return true;
-        for (int row = 0; row < numOfRows; row++) {
-            for (int column = 0; column < numOfCols; column++) {
-
-                T cellValue1 = matrix.get(row).get(column);
-                T cellValue2 = otherMatrix.matrix.get(row).get(column);
-
-                if (!cellValue1.equals(cellValue2)) {
-                    return false;
-                }
-            }
-        }
-        return true;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Matrix)) return false;
+        Matrix<?> matrix1 = (Matrix<?>) o;
+        return numOfRows == matrix1.numOfRows &&
+                numOfCols == matrix1.numOfCols &&
+                Objects.equals(matrix, matrix1.matrix);
     }
-
 
     @Override
     public String

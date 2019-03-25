@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static java.util.Arrays.asList;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class ArithmeticalMatrixTest {
 
@@ -25,7 +25,7 @@ class ArithmeticalMatrixTest {
 
         ArithmeticalMatrix sum = matrix1.add(matrix2);
 
-        assertTrue(expectedSum.isEqual(sum));
+        assertEquals(expectedSum, sum);
     }
 
     @Test
@@ -43,7 +43,7 @@ class ArithmeticalMatrixTest {
 
         ArithmeticalMatrix sum = matrix1.add(matrix2);
 
-        assertFalse(expectedSum.isEqual(sum));
+        assertNotEquals(expectedSum, sum);
     }
 
     @Test
@@ -62,7 +62,7 @@ class ArithmeticalMatrixTest {
 
         ArithmeticalMatrix multiplication = matrix1.multiply(matrix2);
 
-        assertTrue(expectedMultiplication.isEqual(multiplication));
+        assertEquals(expectedMultiplication, multiplication);
     }
 
     @Test
@@ -81,7 +81,7 @@ class ArithmeticalMatrixTest {
 
         ArithmeticalMatrix multiplication = matrix1.multiply(matrix2);
 
-        assertFalse(expectedMultiplication.isEqual(multiplication));
+        assertNotEquals(expectedMultiplication, multiplication);
     }
 
     @Test
@@ -101,7 +101,8 @@ class ArithmeticalMatrixTest {
 
         Matrix<Integer> transpose = matrix.transpose();
 
-        assertTrue(expectedTranspose.isEqual(transpose));
+        assertEquals(expectedTranspose, transpose);
+
     }
 
     @Test
@@ -121,6 +122,6 @@ class ArithmeticalMatrixTest {
 
         Matrix transpose = matrix.transpose();
 
-        assertFalse(expectedTranspose.isEqual(transpose));
+        assertNotEquals(expectedTranspose, transpose);
     }
 }

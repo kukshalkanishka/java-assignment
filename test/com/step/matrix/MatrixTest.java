@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static java.util.Arrays.asList;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class MatrixTest {
     @Test
@@ -26,7 +26,7 @@ class MatrixTest {
 
         Matrix<Integer> transpose = matrix.transpose();
 
-        assertTrue(expectedTranspose.isEqual(transpose));
+        assertEquals(expectedTranspose, transpose);
     }
 
     @Test
@@ -45,8 +45,7 @@ class MatrixTest {
         Matrix<String> expectedTranspose = new Matrix<>(asList(expectedRow1, expectedRow2, expectedRow3));
 
         Matrix<String> transpose = matrix.transpose();
-
-        assertTrue(expectedTranspose.isEqual(transpose));
+        assertEquals(expectedTranspose, transpose);
     }
 
     @Test
@@ -65,7 +64,7 @@ class MatrixTest {
 
         Matrix<Boolean> transpose = matrix.transpose();
 
-        assertTrue(expectedTranspose.isEqual(transpose));
+        assertEquals(expectedTranspose, transpose);
     }
 
     @Test
@@ -84,8 +83,6 @@ class MatrixTest {
         Matrix<Integer> expectedTranspose = new Matrix<>(asList(expectedRow1, expectedRow2, expectedRow3));
 
         Matrix transpose = matrix.transpose();
-
-        assertFalse(expectedTranspose.isEqual(transpose));
+        assertNotEquals(expectedTranspose, transpose);
     }
-
 }
