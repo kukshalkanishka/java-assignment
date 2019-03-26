@@ -7,15 +7,17 @@ class ParkingLot {
 
     private List<Car> parkingLot;
     private int size;
-    private Attendent attendent;
+    private Observer attendant;
+    private int id;
 
-    ParkingLot(int size, Attendent attendent) {
+    ParkingLot(int size, Observer attendant, int id) {
         this.parkingLot = new ArrayList<>(size);
         this.size = size;
-        this.attendent = attendent;
+        this.attendant = attendant;
+        this.id = id;
     }
 
-    private boolean isFull(){
+    private boolean isFull() {
         return parkingLot.size() == this.size;
     }
 
@@ -24,6 +26,6 @@ class ParkingLot {
             throw new ParkingLotSizeExceed();
         }
         this.parkingLot.add(car);
-        if(isFull()) attendent.update();
+        if (isFull()) attendant.update(id);
     }
 }
