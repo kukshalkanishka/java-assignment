@@ -17,7 +17,12 @@ class Attendant implements Observer {
     }
 
     @Override
-    public void update(int parkingLotId) {
+    public void notifyLotIsFull(int parkingLotId) {
         System.out.println("Got notified by " + parkingLotId);
+    }
+
+    @Override
+    public void notifyLotIsFree(int parkingLotId) {
+        System.out.println("Lot is free" + parkingLotId);
     }
 }

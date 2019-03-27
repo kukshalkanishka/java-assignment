@@ -1,9 +1,24 @@
 package com.step.parking_lot;
 
-class Car {
-    private String owner;
+import java.util.Objects;
 
-    Car(String owner) {
-        this.owner = owner;
+class Car {
+    private int number;
+
+    Car(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return number == car.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
     }
 }

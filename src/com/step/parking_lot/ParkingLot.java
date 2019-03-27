@@ -22,10 +22,22 @@ class ParkingLot {
     }
 
     void park(Car car) throws ParkingLotSizeExceed {
+        if (this.parkingLot.contains(car)) {
+            return;
+        }
         if (isFull()) {
             throw new ParkingLotSizeExceed();
         }
         this.parkingLot.add(car);
-        if (isFull()) attendant.update(id);
+        if (isFull()) attendant.notifyLotIsFull(id);
+    }
+
+    boolean unPark(Car car) {
+        if (!this.parkingLot.contains(car)) {
+            return false;
+        }
+        if (isFull()) attendant.notifyLotIsFree(id);
+        this.parkingLot.remove(car);
+        return true;
     }
 }
